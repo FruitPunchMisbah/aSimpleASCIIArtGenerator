@@ -1,4 +1,5 @@
 from PIL import Image
+from tkinter import filedialog, Tk
 
 charRampStyles = {
     "detailed": "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ",
@@ -32,7 +33,17 @@ def imageToASCII(imagePath, inputWidth, rampStyle):
     return "\n".join(asciiArtLines)
 
 if __name__ == "__main__":
-    imagePath = "apple.jpeg"  # Replace with your image path
+    
+    root = Tk()
+    root.withdraw()
+
+    imagePath = filedialog.askopenfilename(
+        title="Select an image",
+        filetypes=[
+            ("Image files", "*.png *.jpg *.jpeg *.bmp *.gif *.webp"),
+            ("All files", "*.*")
+        ]
+    )
 
     userRamp = input("Choose your own character ramp style or press Enter to use the default (@%#*+=-:.): ").strip().lower()
     
