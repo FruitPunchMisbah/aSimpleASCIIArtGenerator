@@ -37,8 +37,11 @@ if __name__ == "__main__":
     userRamp = input("Choose your own character ramp style or press Enter to use the default (@%#*+=-:.): ").strip().lower()
     
     if userRamp not in charRampStyles:
-        print("Invalid ramp style. Using default.")
-        rampStyle = charRampStyles["short"]
+        if(userRamp == ""):
+            rampStyle = charRampStyles["short"]
+        else:
+            print("Invalid ramp style. Using default.")
+            rampStyle = charRampStyles["short"]
     else:
         rampStyle = charRampStyles[userRamp]
 
